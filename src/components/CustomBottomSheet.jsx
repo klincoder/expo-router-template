@@ -1,0 +1,47 @@
+// Import resources
+import React, { useMemo, forwardRef, useCallback } from "react";
+import { BottomSheetModal, BottomSheetBackdrop } from "@gorhom/bottom-sheet";
+
+// Import custom files
+import { tw } from "src/config/constants";
+
+// COMPONENT
+const CustomBottomSheet = forwardRef(
+  ({ snapPoints, onPressBackdrop, children, ...rest }, ref) => {
+    // Define variables
+    const snapPointsDefault = useMemo(() => ["40%"], []);
+    snapPoints = snapPoints || snapPointsDefault;
+
+    // Debug
+    //console.log("customBottomSheet: ",)
+
+    // Return component
+    return (
+      <BottomSheetModal
+        {...rest}
+        index={0}
+        ref={ref}
+        snapPoints={snapPoints}
+        enablePanDownToClose={true}
+        style={tw`px-4 rounded-t-xl`}
+        handleStyle={tw`mb-3`}
+        backdropComponent={useCallback(
+          (props) => (
+            <BottomSheetBackdrop
+              {...props}
+              appearsOnIndex={0}
+              disappearsOnIndex={-1}
+              onPress={onPressBackdrop}
+            />
+          ),
+          []
+        )}
+      >
+        {children}
+      </BottomSheetModal>
+    ); // close return
+  } // close component
+); // close forward ref
+
+// Export
+export default CustomBottomSheet;
