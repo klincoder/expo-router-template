@@ -27,7 +27,7 @@ import {
   CONSTANTS
 ****************************/
 // APP NAME
-export const appName = "KlinCoder";
+export const appName = "ExpoRouterTemplate";
 
 // CUSTOM TAILWIND STYLES
 export const tw = createStyle(require("../../tailwind.config.js"));
@@ -53,12 +53,92 @@ export const globalScreenOptions = {
   headerStyle: tw`bg-white`,
 };
 
+// SCREEN INFO
+export const screenInfo = {
+  width: Dimensions.get("window").width,
+  height: Dimensions.get("window").height,
+  scale: Dimensions.get("window").scale,
+  fontScale: Dimensions.get("window").fontScale,
+};
+
+// LOCAL STORAGE KEYS
+export const localKeys = {
+  cart: "cart",
+  appSettings: "appSettings",
+};
+
+// ALERT MESSAGE
+export const alertMsg = {
+  // Success
+  generalSucc: "Action successful 👍",
+  // Error
+  generalErr: "internal error. Try again 😔",
+  generalErr: "Invalid credentials 😔",
+};
+
+// EMAIL TEMPLATES
+export const emailTemp = {
+  otp: 4468134,
+  verify: 4469644,
+  recovery: 4470092,
+  profile: 4471756,
+  welcome: 4471793,
+  login: 4471814,
+  newUser: 4471824,
+};
+
+// PAYSTACK CONNECTION
+export const paystackConn = isProdEnv
+  ? {
+      public: PAYSTACK_PROD_PUBLIC_KEY,
+      secret: PAYSTACK_PROD_SECRET_KEY,
+    }
+  : {
+      public: PAYSTACK_DEV_PUBLIC_KEY,
+      secret: PAYSTACK_DEV_SECRET_KEY,
+    };
+
+// ACTION SETTINGS
+export const actionSettings = {
+  url: `${baseUrl}/login`,
+  // iOS: {
+  //   bundleId: "com.example.klincoder",
+  // },
+  // android: {
+  //   packageName: "com.example.klincoder",
+  //   installApp: true,
+  //   minimumVersion: "12",
+  // },
+  //handleCodeInApp: false,
+  //dynamicLinkDomain: 'custom.page.link'
+};
+
 // APP COLORS
 export const appColors = {
   primary: "#313BAC",
   secondary: "#11143C",
   accent: "#F9F871",
   gray: "#9CA3AF",
+};
+
+// APP IMAGES
+export const appImages = {
+  logo,
+  logoIcon,
+  avatar,
+  general: "https://placehold.co/600x400.png",
+  avatarLink:
+    "https://firebasestorage.googleapis.com/v0/b/klincoder-dev.appspot.com/o/avatar-default.png?alt=media&token=589b5b52-2bf3-42e1-994c-e89d1d203f9f",
+};
+
+// APP REGEX
+export const appRegex = {
+  phone: /^(?:\d{11})$/,
+  numberDecimal: /^\d*(\.\d+)?$/,
+  fiveDecimalPlaces: /^\d*(\.\d{1,5})?$/,
+  digitsOnly: /^[0-9]+$/,
+  cannotStartWithZero: /^(?:[1-9]\d*|0)$/,
+  noSpace: /\s/g,
 };
 
 // APP THEME
@@ -94,83 +174,6 @@ export const appTheme = createTheme({
     },
   },
 });
-
-// APP IMAGES
-export const appImages = {
-  general: "https://placehold.co/600x400.png",
-  logo,
-  logoIcon,
-  avatar,
-};
-
-// APP REGEX
-export const appRegex = {
-  phone: /^(?:\d{11})$/,
-  numberDecimal: /^\d*(\.\d+)?$/,
-  fiveDecimalPlaces: /^\d*(\.\d{1,5})?$/,
-  digitsOnly: /^[0-9]+$/,
-  cannotStartWithZero: /^(?:[1-9]\d*|0)$/,
-  noSpace: /\s/g,
-};
-
-// ALERT MESSAGE
-export const alertMsg = {
-  // Success
-  generalSucc: "Action successful 👍",
-  // Error
-  generalErr: "internal error. Please contact support 😔",
-};
-
-// EMAIL TEMPLATES
-export const emailTemp = {
-  otp: 4468134,
-  verify: 4469644,
-  recovery: 4470092,
-  profile: 4471756,
-  welcome: 4471793,
-  login: 4471814,
-  newUser: 4471824,
-};
-
-// SCREEN INFO
-export const screenInfo = {
-  width: Dimensions.get("window").width,
-  height: Dimensions.get("window").height,
-  scale: Dimensions.get("window").scale,
-  fontScale: Dimensions.get("window").fontScale,
-};
-
-// PAYSTACK CONNECTION
-export const paystackConn = isProdEnv
-  ? {
-      public: PAYSTACK_PROD_PUBLIC_KEY,
-      secret: PAYSTACK_PROD_SECRET_KEY,
-    }
-  : {
-      public: PAYSTACK_DEV_PUBLIC_KEY,
-      secret: PAYSTACK_DEV_SECRET_KEY,
-    };
-
-// LOCAL STORAGE KEYS
-export const localKeys = {
-  cart: "cart",
-  appSettings: "appSettings",
-};
-
-// ACTION SETTINGS
-export const actionSettings = {
-  url: `${baseUrl}/login`,
-  // iOS: {
-  //   bundleId: "com.example.klincoder",
-  // },
-  // android: {
-  //   packageName: "com.example.klincoder",
-  //   installApp: true,
-  //   minimumVersion: "12",
-  // },
-  //handleCodeInApp: false,
-  //dynamicLinkDomain: 'custom.page.link'
-};
 
 /*****************
   DATA

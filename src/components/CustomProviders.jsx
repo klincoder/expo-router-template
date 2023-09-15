@@ -109,7 +109,7 @@ const CustomProviders = ({ children }) => {
             phone: dbUser?.phone_number,
             username: dbUser?.username,
             alerts: dbUser?.alerts,
-            avatar: dbUser?.avatar || appImages?.avatar,
+            avatar: dbUser?.avatar || appImages?.avatarLink,
             usernameFormat: dbUsernameFormat || "guest",
             status: dbUser?.status,
             emailVerified: res?.emailVerified,
