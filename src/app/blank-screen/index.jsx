@@ -22,7 +22,7 @@ const BlankScreen = () => {
       <Stack.Screen options={{ headerShown: false }} />
 
       {/** SECTION - 1 */}
-      <View className="flex-1 items-center justify-center">
+      <View style={tw`flex-1 items-center justify-center`}>
         <CustomText>BlankScreen</CustomText>
       </View>
     </CustomSafeView>

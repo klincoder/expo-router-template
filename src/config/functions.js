@@ -991,6 +991,31 @@ export const handleRemoveLocalStorage = async (key) => {
   return await AsyncStorage.removeItem(key);
 }; // close fxn
 
+// HANDLE SORT STEP
+export const handleSortStep = (objArr) => {
+  // If empty args, return
+  if (!objArr) return [];
+  let tempArr = [...objArr];
+  return tempArr?.sort((a, b) => (a?.step > b?.step ? 1 : -1));
+}; // close fxn
+
+// HANDLE SORT DATE CREATED
+export const handleSortDateCreated = (objArr, type) => {
+  // If empty args, return
+  if (!objArr) return [];
+  type = type || "desc";
+  let tempArr = [...objArr];
+  const isAsc = type === "asc";
+  return tempArr?.sort((obj1, obj2) => {
+    const date1 = new Date(obj1?.date_created);
+    const date2 = new Date(obj2?.date_created);
+    const result = isAsc
+      ? Number(date1) - Number(date2)
+      : Number(date2) - Number(date1);
+    return result;
+  }); // close loop
+}; // close fxn
+
 /****************
   PROJECT FXNS
 *****************/
