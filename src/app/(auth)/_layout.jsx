@@ -10,6 +10,7 @@ const AuthLayout = () => {
   const screenList = [
     {
       name: "login",
+      options: {},
     },
   ];
 

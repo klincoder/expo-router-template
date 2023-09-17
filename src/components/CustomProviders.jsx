@@ -64,68 +64,68 @@ const CustomProviders = ({ children }) => {
 
   // FUNCTIONS
   // HANDLE STARTUP DATA
-  const handleStartUpData = async () => {
-    // Try catch
-    try {
-      const getAppSettings = await handleGetAppSettings();
-      const getCart = await handleGetLocalStorage(localKeys?.cart);
-      // Send all request
-      const allReq = await Promise.all([getAppSettings, getCart]);
-      // Get all result
-      const allRes = {
-        appSettings: allReq?.[0],
-        cart: allReq?.[1],
-      }; // close return
-      // Set state
-      setAppSettings(allRes?.appSettings);
-      setCart(allRes?.cart);
-    } catch (err) {
-      //console.log("customProvidersErr: ", err.message);
-    } // close try catch
-  }; // close fxn
+  // const handleStartUpData = async () => {
+  //   // Try catch
+  //   try {
+  //     const getAppSettings = await handleGetAppSettings();
+  //     const getCart = await handleGetLocalStorage(localKeys?.cart);
+  //     // Send all request
+  //     const allReq = await Promise.all([getAppSettings, getCart]);
+  //     // Get all result
+  //     const allRes = {
+  //       appSettings: allReq?.[0],
+  //       cart: allReq?.[1],
+  //     }; // close return
+  //     // Set state
+  //     setAppSettings(allRes?.appSettings);
+  //     setCart(allRes?.cart);
+  //   } catch (err) {
+  //     //console.log("customProvidersErr: ", err.message);
+  //   } // close try catch
+  // }; // close fxn
 
   // SIDE EFFECTS
   // LISTEN TO AUTH STATE
-  useEffect(() => {
-    // If empty args, return
-    if (!internetConn) return;
-    // On mount
-    const unsubscribe = onAuthStateChanged(fireAuth, (res) => {
-      // If res
-      if (!res?.uid) {
-        setUser(null);
-      } else {
-        // Define docRef
-        const docRef = doc(fireDB, "users", res?.uid);
-        onSnapshot(docRef, (snapshot) => {
-          // Define variables
-          const dbUser = snapshot.data();
-          const dbUsername = dbUser?.username;
-          const dbUsernameFormat = handleSliceString(dbUsername, 0, 12);
-          const userData = {
-            id: dbUser?.id,
-            name: dbUser?.full_name,
-            email: dbUser?.email_address,
-            phone: dbUser?.phone_number,
-            username: dbUser?.username,
-            alerts: dbUser?.alerts,
-            avatar: dbUser?.avatar || appImages?.avatarLink,
-            usernameFormat: dbUsernameFormat || "guest",
-            status: dbUser?.status,
-            emailVerified: res?.emailVerified,
-            lastLogin: res?.metadata?.lastSignInTime,
-            // Project specific
-          };
-          // Set user
-          setUser(userData);
-        }); // close snapshot
-      } // close if
-    }); // close unsubscribe
-    // Clean up
-    return () => {
-      unsubscribe();
-    }; // close return
-  }, [internetConn, setUser]);
+  // useEffect(() => {
+  //   // If empty args, return
+  //   if (!internetConn) return;
+  //   // On mount
+  //   const unsubscribe = onAuthStateChanged(fireAuth, (res) => {
+  //     // If res
+  //     if (!res?.uid) {
+  //       setUser(null);
+  //     } else {
+  //       // Define docRef
+  //       const docRef = doc(fireDB, "users", res?.uid);
+  //       onSnapshot(docRef, (snapshot) => {
+  //         // Define variables
+  //         const dbUser = snapshot.data();
+  //         const dbUsername = dbUser?.username;
+  //         const dbUsernameFormat = handleSliceString(dbUsername, 0, 12);
+  //         const userData = {
+  //           id: dbUser?.id,
+  //           name: dbUser?.full_name,
+  //           email: dbUser?.email_address,
+  //           phone: dbUser?.phone_number,
+  //           username: dbUser?.username,
+  //           alerts: dbUser?.alerts,
+  //           avatar: dbUser?.avatar || appImages?.avatarLink,
+  //           usernameFormat: dbUsernameFormat || "guest",
+  //           status: dbUser?.status,
+  //           emailVerified: res?.emailVerified,
+  //           lastLogin: res?.metadata?.lastSignInTime,
+  //           // Project specific
+  //         };
+  //         // Set user
+  //         setUser(userData);
+  //       }); // close snapshot
+  //     } // close if
+  //   }); // close unsubscribe
+  //   // Clean up
+  //   return () => {
+  //     unsubscribe();
+  //   }; // close return
+  // }, [internetConn, setUser]);
 
   // SIDE EFFECTS
   // HANDLE PROTECTED ROUTES
@@ -152,11 +152,6 @@ const CustomProviders = ({ children }) => {
       try {
         // Get data
         //await handleStartUpData();
-
-        // If userID
-        if (userID) {
-          // Get all user data
-        } // close if
 
         // Debug
         //console.log("customProviders: ",);
@@ -187,10 +182,10 @@ const CustomProviders = ({ children }) => {
   }, []);
 
   // HIDE SPLASH SCREEN
-  if (appIsReady && loaded) {
-    SplashScreen.hideAsync();
-  } else {
+  if (!appIsReady || !loaded) {
     return null;
+  } else {
+    SplashScreen.hideAsync();
   } // close if
 
   // Return component
