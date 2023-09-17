@@ -26,9 +26,6 @@ const HomeScreen = () => {
   // Return component
   return (
     <CustomSafeView>
-      {/** Screen details */}
-      <Tabs.Screen options={{ headerShown: false }} />
-
       {/** SECTION 1 */}
       <View style={tw`flex-1 items-center justify-center`}>
         <CustomText>Home screen</CustomText>

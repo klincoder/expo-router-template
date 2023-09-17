@@ -10,17 +10,12 @@ import { tw } from "src/config/constants";
 
 // COMPONENT
 const SettingsScreen = () => {
-  // Define variables
-
   // Debug
   //console.log("settingsScreen: ",);
 
   // Return component
   return (
     <CustomSafeView>
-      {/** Screen details */}
-      <Stack.Screen options={{ headerShown: true }} />
-
       {/** SECTION - 1 */}
       <View style={tw`flex-1 items-center justify-center`}>
         <CustomText>Settings Screen</CustomText>

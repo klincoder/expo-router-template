@@ -6,11 +6,18 @@ import { Tabs } from "expo-router";
 // Import custom files
 import CustomText from "src/components/CustomText";
 import CustomIcon from "src/components/CustomIcon";
+import useAuthState from "src/hooks/useAuthState";
+import CustomImage from "src/components/CustomImage";
+import LogoutBtn from "src/components/LogoutBtn";
 import { tw } from "src/config/constants";
 
 // COMPONENT
 const BottomTabsLayout = () => {
+  // Define state
+  const { user } = useAuthState();
+
   // Define variables
+  const titleHeader = `Hi, ${user?.usernameFormat || "guest"}`;
   const screenList = [
     {
       name: "home",
@@ -18,6 +25,7 @@ const BottomTabsLayout = () => {
       iconType: "ionIcons",
       iconName: "home-outline",
       activeIconName: "home",
+      headerShown: false,
     },
     {
       name: "account",
@@ -25,6 +33,23 @@ const BottomTabsLayout = () => {
       iconType: "fontAwesome5",
       iconName: "user",
       activeIconName: "user-alt",
+      headerShown: true,
+      headerTitle: titleHeader,
+      headerTitleStyle: tw`font-medium`,
+      headerLeft: () => (
+        <View style={tw`pl-3`}>
+          <CustomImage
+            isLink
+            image={user?.avatar}
+            style={tw`w-8 h-8 bg-white rounded-full`}
+          />
+        </View>
+      ),
+      headerRight: () => (
+        <View style={tw`pr-3`}>
+          <LogoutBtn />
+        </View>
+      ),
     },
   ];
 
@@ -37,12 +62,20 @@ const BottomTabsLayout = () => {
         headerTitleStyle: tw`text-black font-medium`,
       }}
     >
+      {/** Tab screens */}
       {/** Loop data */}
       {screenList?.map((item, index) => (
         <Tabs.Screen
           key={`tabs-${index + 1}`}
           name={item?.name}
           options={{
+            // Header properties
+            headerShown: item?.headerShown,
+            headerTitle: item?.headerTitle,
+            headerTitleStyle: item?.headerTitleStyle,
+            headerLeft: item?.headerLeft,
+            headerRight: item?.headerRight,
+            // Tab bar properties
             tabBarStyle: tw`h-14 py-1`,
             tabBarLabel: ({ focused, color, position }) => (
               <CustomText

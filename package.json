@@ -54,8 +54,7 @@
   "devDependencies": {
     "@babel/core": "^7.19.3",
     "babel-plugin-module-resolver": "^5.0.0",
-    "react-native-dotenv": "^3.4.9",
-    "tailwindcss": "^3.3.3"
+    "react-native-dotenv": "^3.4.9"
   },
   "resolutions": {
     "metro": "^0.73.7",

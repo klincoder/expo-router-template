@@ -11,7 +11,7 @@ const HomeLayout = () => {
   const screenList = [
     {
       name: "index",
-      options: { headerTitle: "Home" },
+      options: { headerShown: false, headerTitle: "Home" },
     },
   ];
 
