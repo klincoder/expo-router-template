@@ -9,6 +9,8 @@ import { tw } from "src/config/constants";
 
 // COMPONENT
 const BlankScreen = () => {
+  // Define variables
+
   // Debug
   //console.log("blankScreen: ",);
 

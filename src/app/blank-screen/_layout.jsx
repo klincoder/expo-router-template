@@ -11,11 +11,11 @@ const BlankLayout = () => {
   const screenList = [
     {
       name: "index",
-      options: { headerTitle: "Blank" },
+      options: { headerShown: false, headerTitle: "Blank" },
     },
     {
       name: "[slug]",
-      options: { headerTitle: "BlankDetails" },
+      options: { headerShown: false, headerTitle: "BlankDetails" },
     },
   ];
 

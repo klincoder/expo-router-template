@@ -1,7 +1,6 @@
 // Import resources
 import React from "react";
 import { View } from "react-native";
-import { Stack } from "expo-router";
 
 // Import custom files
 import CustomSafeView from "src/components/CustomSafeView";
@@ -18,9 +17,6 @@ const OnboardingScreen = () => {
   // Return component
   return (
     <CustomSafeView styleContainer={tw`p-0`}>
-      {/** Screen details */}
-      <Stack.Screen options={{ headerShown: false }} />
-
       {/** SECTION - 1 */}
       <View style={tw`flex-1 items-center justify-center`}>
         <CustomText>Onboarding Screen</CustomText>

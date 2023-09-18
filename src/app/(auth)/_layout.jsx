@@ -10,7 +10,19 @@ const AuthLayout = () => {
   const screenList = [
     {
       name: "login",
-      options: {},
+      options: { headerTitle: "Login" },
+    },
+    {
+      name: "register",
+      options: { headerTitle: "Register" },
+    },
+    {
+      name: "recovery",
+      options: { headerTitle: "Recovery" },
+    },
+    {
+      name: "onboarding",
+      options: { headerTitle: "Onboarding" },
     },
   ];
 
